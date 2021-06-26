@@ -1,0 +1,36 @@
+<div>
+    {{ $pageGroups := .Scratch.Get "pageGroups" }}
+    {{ range $pageGroups }}
+    <!-- Year -->
+    <h1>{{ .Key }}</h1>
+    <!-- List all pages of the Year -->
+    {{ range where .Pages "Section" "posts" }}
+    <article>
+        <!-- date column -->
+        <div>
+            <h6>{{ .Date.Format "Jan 2"}} </h6>
+        </div>
+        <!-- article title and summary etc.  -->
+        <div>
+            <h2>
+                <!-- title -->
+                <a href="{{ .Permalink }}">
+                    {{ .Title }}
+                    {{ if .Draft }} ::draft {{ end }}
+                </a>
+                <!-- summary -->
+                <div>
+                    {{ .Summary | plainify | safeHTML | truncate 400 }}
+                    {{ if .Truncated }}
+                    <br>
+                    <a href="{{ .Permalink }}">
+                        <p>more</p>
+                    </a>
+                    {{ end }}
+                </div>
+            </h2>
+        </div>
+    </article>
+    {{ end }}
+    {{ end }}
+</div>

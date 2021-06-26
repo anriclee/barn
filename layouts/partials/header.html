@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html {{ with .Site.LanguageCode }} lang = "{{ . }}" {{end}}>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        {{ $scratch := newScratch }}
+        {{ $scratch.Set "baseURL" .Site.BaseURL}}
+        <!--if homepage then site title displayed otherwise article title displayed-->
+        <title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }} {{ end}}</title>
+        <link rel="stylesheet" href="{{ $scratch.Get `baseURL`}}/css/style.css">
+        <!--import fontsome css, link pasted from official website, the same as follows -->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!--highlight style -->
+        {{ with .Site.Params.highlight.style }}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/base16/{{ . }}.min.css" crossorigin="anonymous">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js" integrity="sha512-W7EehcwtSbRF63FIQlXEOOd5mnq0Et0V0nUOvwcUvjnCKgOLLYbqriQxEQSp63sfrkryxIg/A/O8v8O18QwQCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>            
+            <script>hljs.initHighlightingOnload()</script>
+            <script src="{{ $scratch.Get `baseURL` }}/js/highlight.js"></script>
+        {{ end }}
+
+        <!-- share related -->
+        {{ if eq "true" .Site.Params.share.enabled }}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsSocials/1.5.0/jssocials.css" integrity="sha512-RnlOHNqHvv1JWAQk+6/Chw2zfzPkq91LvnsOak8fJzXJ5g+msDb26UGCIXGhTAgVGrFgsXZx0PM1i7iFXY/5KQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />        {{ end }}
+            <script type="text/javascript" src="{{ $scratch.Get `baseURL` }}/js/jssocials.js"></script>
+        {{ .Scratch.Delete "baseURL" }}
+    </html>
+</html>
