@@ -1,5 +1,6 @@
 <div class="container">
     <div class="columns">
+        {{ if .Site.RegularPages }}
         {{ $pageGroups := (.Paginate (.Site.RegularPages.GroupByDate "2006")).PageGroups }}
         {{ .Scratch.Set "pageGroups" $pageGroups}}
         <!-- pass pageGroups params here to make code clean, thus post_list.html only get pageGroups and 
@@ -8,5 +9,6 @@
             {{ partial "post_list.html" .}}
             {{ partial "pagination.html" . }}
         </div>
+        {{ end }}
     </div>
 </div>

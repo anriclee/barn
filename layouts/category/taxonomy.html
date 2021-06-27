@@ -1,5 +1,7 @@
 {{ define "main" }}
-    {{ $pageGroups := (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
-    {{ .Scratch.Set "pageGroups" $pageGroups}}
-    {{ partial "post_list.html" .}}
+{{ if .Site.RegularPages }}
+{{ $pageGroups := (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
+{{ .Scratch.Set "pageGroups" $pageGroups}}
+{{ partial "post_list.html" .}}
+{{ end }}
 {{ end }}
