@@ -1,30 +1,35 @@
-<div>
+<div class="container">
     {{ $pageGroups := .Scratch.Get "pageGroups" }}
     {{ range $pageGroups }}
     <!-- Year -->
-    <h1>{{ .Key }}</h1>
+    <h1 class="title">{{ .Key }}</h1>
     <!-- List all pages of the Year -->
     {{ range where .Pages "Section" "posts" }}
-    <article>
+    <article class="columns">
         <!-- date column -->
-        <div>
-            <h6>{{ .Date.Format "Jan 2"}} </h6>
+        <div class="column is-2">
+            <h6 class="is-inline" style="white-space: nowrap;">{{ .Date.Format "Jan 2"}} </h6>
         </div>
         <!-- article title and summary etc.  -->
-        <div>
-            <h2>
+        <div class="column">
+            <h2 class="subtitle is-inline is-size-4-mobile is-size-3-desktop">
                 <!-- title -->
-                <a href="{{ .Permalink }}">
-                    {{ .Title }}
-                    {{ if .Draft }} ::draft {{ end }}
-                </a>
+                <h1>
+                    <a href="{{ .Permalink }}">
+                        {{ .Title }}
+                        {{ if .Draft }} ::draft {{ end }}
+                    </a>
+                </h1>
                 <!-- summary -->
-                <div>
+                <div class="content is-hidden-mobile">
                     {{ .Summary | plainify | safeHTML | truncate 400 }}
                     {{ if .Truncated }}
                     <br>
-                    <a href="{{ .Permalink }}">
-                        <p>more</p>
+                    <a class="button is-marginless is-paddingless" href="{{ .Permalink }}">
+                        <span class="icon-link is-small" style="line-height: 100%;">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        </span>
+                        <p style="padding: 0 5px;">more</p>
                     </a>
                     {{ end }}
                 </div>

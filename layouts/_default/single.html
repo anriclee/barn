@@ -1,7 +1,7 @@
 {{ define "main" }}
-<div>
-    <h2>{{ .Date.Format "January 2,2006"}}</h2>
-    <h1>{{ .Title }}</h1>
-    <div>{{ .Content }}</div>
+<div class="container">
+    <h2 class="subtitle is-6">{{ .Date.Format "January 2,2006"}}</h2>
+    <h1 class="subtitle is-size-4-mobile is-size-3-desktop">{{ .Title }}</h1>
+    <div class="content">{{ .Content }}</div>
 </div>
 {{ end }}

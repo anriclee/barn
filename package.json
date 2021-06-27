@@ -2,9 +2,11 @@
   "name": "barn",
   "version": "1.0.0",
   "description": "hugo theme",
-  "main": "sass/mystyles.scss",
+  "main": "sass/styles.scss",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "css-build": "node-sass --omit-source-map-url scss/mystyles.scss static/css/styles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
   },
   "author": "anriclee",
   "license": "MIT",
