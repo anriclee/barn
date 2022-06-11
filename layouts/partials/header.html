@@ -32,12 +32,5 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 {{ end }}
 <script type="text/javascript" src="{{ $scratch.Get `baseURL` }}/js/jssocials.js"></script>
-<script src="https://utteranc.es/client.js"
-        repo="diagramStorage"
-        issue-term=""
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
 {{ .Scratch.Delete "baseURL" }}
 </html>
