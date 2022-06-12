@@ -8,9 +8,6 @@
     <div id="content">
         {{- block "main" . }}
         {{- end }}
-        {{ if eq "true" .Site.Params.comment.enabled }} 
-            {{- partial "comment.html" . -}}
-        {{ end }}
     </div>
     {{- partial "footer.html" . -}}
 </body>

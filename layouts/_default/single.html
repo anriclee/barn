@@ -4,4 +4,7 @@
     <h1 class="subtitle is-size-4-mobile is-size-3-desktop">{{ .Title }}</h1>
     <div class="content">{{ .Content }}</div>
 </div>
+{{ if eq "true" .Site.Params.comment.enabled }}
+{{- partial "comment.html" . -}}
+{{ end }}
 {{ end }}
